@@ -1,1 +1,2 @@
-export * from './parsers/parseTypeScript';
+export * from './parsers/parseTS';
+export * from './scan';

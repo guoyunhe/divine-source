@@ -4,7 +4,7 @@ import { removeBlank } from '../helpers/removeBlank';
 import { removeImportTypeScript } from '../helpers/removeImportTypeScript';
 import { ParseResult } from '../types/ParseResult';
 
-export async function parseTypeScript(source: string): Promise<ParseResult> {
+export async function parseTS(source: string): Promise<ParseResult> {
   const total = countLines(source);
   let codes = total;
 
@@ -24,7 +24,6 @@ export async function parseTypeScript(source: string): Promise<ParseResult> {
     transforms: ['typescript', 'jsx'],
   });
   const sourceNoType = removeBlank(transformed.replace('const _jsxFileName = "";', ''));
-  console.log(sourceNoType);
   const types = codes - countLines(sourceNoType);
   codes -= types;
 

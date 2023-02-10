@@ -1,10 +1,10 @@
 import { readFile } from 'fs/promises';
-import { parseTypeScript } from './parseTypeScript';
+import { parseTS } from './parseTS';
 
-describe('parseTypeScript()', () => {
+describe('parseTS()', () => {
   it('parse function', async () => {
     const content = await readFile('examples/function.ts', 'utf-8');
-    const result = await parseTypeScript(content);
+    const result = await parseTS(content);
     expect(result).toEqual({
       blanks: 3,
       codes: 6,
@@ -17,7 +17,7 @@ describe('parseTypeScript()', () => {
 
   it('parse react component', async () => {
     const content = await readFile('examples/react.tsx', 'utf-8');
-    const result = await parseTypeScript(content);
+    const result = await parseTS(content);
     expect(result).toEqual({
       blanks: 3,
       codes: 9,
