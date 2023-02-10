@@ -50,7 +50,8 @@
     "preset": "@guoyunhe/node-scripts"
   },
   "dependencies": {
-    "commander": "^9.0.0"
+    "commander": "^9.0.0",
+    "sucrase": "^3.29.0"
   },
   "devDependencies": {
     "@guoyunhe/node-scripts": "^1.0.0",
