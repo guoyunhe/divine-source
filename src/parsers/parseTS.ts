@@ -1,6 +1,7 @@
 import { transform } from 'sucrase';
 import { countLines } from '../helpers/countLines';
 import { removeBlank } from '../helpers/removeBlank';
+import { removeComment } from '../helpers/removeComment';
 import { removeImportTypeScript } from '../helpers/removeImportTypeScript';
 import { ParseResult } from '../types/ParseResult';
 
@@ -12,9 +13,7 @@ export async function parseTS(source: string): Promise<ParseResult> {
   const blanks = codes - countLines(sourceNoBlank);
   codes -= blanks;
 
-  const sourceNoComment = removeBlank(
-    sourceNoBlank.replace(/^\s*\/\*[\s\S]*?\*\/$|^\s*\/\/.*$/gm, '')
-  );
+  const sourceNoComment = removeBlank(removeComment(sourceNoBlank));
   const comments = codes - countLines(sourceNoComment);
   codes -= comments;
 
