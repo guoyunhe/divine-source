@@ -1,14 +1,25 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander';
-import { action } from '..';
+import { scan } from '..';
+
+function collect(value: string, previous: string[]): string[] {
+  return previous.concat([value]);
+}
 
 const program = new Command('divine-source');
 
 program
-  .argument('[word]', 'Word to print on console')
-  .option('--repeat <times>', 'Print repeat times, 1 by default', parseInt)
-  .action(action);
+  .argument('<dirs...>', 'Files or directories to scan')
+  .option(
+    '--ignore <pattern>',
+    'File pattern to ignore (repeat to add multiple patterns)',
+    collect,
+    []
+  )
+  .action(async (dirs: string[], options: any) => {
+    const result = await scan(dirs, options);
+  });
 
 program.helpOption('-h, --help', 'Show full help');
 
