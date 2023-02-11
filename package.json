@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "keywords": [
+    "cloc",
+    "sloc",
     "node",
     "cli"
   ],
-  "homepage": "https://github.com/guoyunhe/divine-so#readme",
+  "homepage": "https://github.com/guoyunhe/divine-source#readme",
   "bugs": {
-    "url": "https://github.com/guoyunhe/divine-so/issues"
+    "url": "https://github.com/guoyunhe/divine-source/issues"
   },
   "repository": {
     "type": "git",
@@ -20,11 +22,11 @@
     "name": "Guo Yunhe",
     "email": "i@guoyunhe.me"
   },
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "typings": "dist/dts/index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "typings": "dist/index.d.ts",
   "bin": {
-    "divine-source": "dist/cjs/bin/divine-source.js"
+    "divine-source": "dist/divine-source.js"
   },
   "files": [
     "dist",
@@ -55,7 +57,7 @@
     "sucrase": "^3.29.0"
   },
   "devDependencies": {
-    "@guoyunhe/node-scripts": "^1.9.0",
+    "@guoyunhe/node-scripts": "^2.0.2",
     "@tsconfig/node16": "^1.0.3",
     "@types/jest": "^29.4.0",
     "@types/node": "^16.18.12",
