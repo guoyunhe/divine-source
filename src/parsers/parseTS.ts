@@ -12,7 +12,9 @@ export async function parseTS(source: string): Promise<ParseResult> {
   const blanks = codes - countLines(sourceNoBlank);
   codes -= blanks;
 
-  const sourceNoComment = removeBlank(sourceNoBlank.replace(/\/\*[\s\S]*?\*\/|\/\/.*/g, ''));
+  const sourceNoComment = removeBlank(
+    sourceNoBlank.replace(/^\s*\/\*[\s\S]*?\*\/$|^\s*\/\/.*$/gm, '')
+  );
   const comments = codes - countLines(sourceNoComment);
   codes -= comments;
 
@@ -20,12 +22,19 @@ export async function parseTS(source: string): Promise<ParseResult> {
   const imports = codes - countLines(sourceNoImport);
   codes -= imports;
 
-  const { code: transformed } = await transform(sourceNoImport, {
-    transforms: ['typescript', 'jsx'],
-  });
-  const sourceNoType = removeBlank(transformed.replace('const _jsxFileName = "";', ''));
-  const types = codes - countLines(sourceNoType);
-  codes -= types;
+  let types = 0;
+  try {
+    const { code: transformed } = await transform(sourceNoImport, {
+      transforms: ['typescript', 'jsx'],
+    });
+    const sourceNoType = removeBlank(transformed.replace('const _jsxFileName = "";', ''));
+    types = codes - countLines(sourceNoType);
+    codes -= types;
+  } catch (e) {
+    console.log('Failed to parse source code:');
+    console.log(sourceNoImport);
+    console.log(e);
+  }
 
   return {
     total,
