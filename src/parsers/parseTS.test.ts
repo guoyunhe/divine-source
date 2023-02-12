@@ -6,12 +6,12 @@ describe('parseTS()', () => {
     const content = await readFile('examples/function.ts', 'utf-8');
     const result = await parseTS(content);
     expect(result).toEqual({
-      blanks: 3,
-      codes: 6,
-      comments: 7,
-      imports: 0,
-      total: 17,
-      types: 1,
+      blankLines: 3,
+      codeLines: 6,
+      commentLines: 7,
+      importLines: 0,
+      totalLines: 17,
+      typeLines: 1,
     });
   });
 
@@ -19,12 +19,12 @@ describe('parseTS()', () => {
     const content = await readFile('examples/react.tsx', 'utf-8');
     const result = await parseTS(content);
     expect(result).toEqual({
-      blanks: 3,
-      codes: 9,
-      comments: 0,
-      imports: 1,
-      total: 16,
-      types: 3,
+      blankLines: 3,
+      codeLines: 9,
+      commentLines: 0,
+      importLines: 1,
+      totalLines: 16,
+      typeLines: 3,
     });
   });
 });

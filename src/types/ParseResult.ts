@@ -4,34 +4,34 @@ export interface ParseResult {
    *
    * Should be the summary of rest counts together.
    */
-  total: number;
+  totalLines: number;
 
   /**
    * Count of code lines.
    *
    * Exclude blank, comment, import, type lines.
    */
-  codes: number;
+  codeLines: number;
 
   /**
    * Count of import lines.
    */
-  imports: number;
+  importLines: number;
 
   /**
    * Count of type definition lines.
    *
    * TypeScript only.
    */
-  types: number;
+  typeLines?: number;
 
   /**
    * Count of comment lines.
    */
-  comments: number;
+  commentLines: number;
 
   /**
    * Count of blank lines.
    */
-  blanks: number;
+  blankLines: number;
 }

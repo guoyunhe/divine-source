@@ -1,0 +1,29 @@
+@import url('https://example.com/style.css');
+
+/* This is a comment */
+
+/* This is a comment with URL https://developer.mozilla.org/ */
+
+/* This is a comment */
+body {
+  /* This is a comment */
+  color: oklch(61% 0.2 29); /* This is a comment */
+}
+
+@media screen and (max-width: 1200px) {
+  @import url('https://example.com/style.css');
+
+  body {
+    font-size: 12px !important;
+  }
+}
+
+button::before {
+  /* Strings like cooment */
+  content: ' /* xxx */ ';
+  /* Multi-line comma-separated value */
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3), 1px 1px 1px rgba(0, 0, 0, 0.3) inset,
+    /* This is a comment ....................................................................... */
+      1px 1px 1px rgba(0, 0, 0, 0.3),
+    1px 1px 1px rgba(0, 0, 0, 0.3);
+}
